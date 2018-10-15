@@ -12,13 +12,13 @@ export class User extends Entity {
     type: 'string',
     required: true
   })
-  email: string;
+  username: string;
 
   @property({
     type: 'string',
     required: true
   })
-  username: string;
+  email: string;
 
   @property({
     type: 'string',
@@ -33,9 +33,10 @@ export class User extends Entity {
   lastName: string;
 
   @property({
-    type: 'string'
+    type: 'string',
+    required: true
   })
-  displayName?: string;
+  displayName: string;
 
   @property({
     type: 'string'

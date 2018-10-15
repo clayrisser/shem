@@ -32,6 +32,7 @@ export class UserController {
     }
   })
   async create(@requestBody() user: User): Promise<User> {
+    delete user.id;
     return await this.userRepository.create(user);
   }
 
