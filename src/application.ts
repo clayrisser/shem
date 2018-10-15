@@ -6,7 +6,7 @@ import { ServiceMixin } from '@loopback/service-proxy';
 import { MySequence } from './sequence';
 
 export class ShemApplication extends BootMixin(
-  ServiceMixin(RepositoryMixin(RestApplication)),
+  ServiceMixin(RepositoryMixin(RestApplication))
 ) {
   constructor(options: ApplicationConfig = {}) {
     super(options);
@@ -16,8 +16,8 @@ export class ShemApplication extends BootMixin(
       controllers: {
         dirs: ['controllers'],
         extensions: ['.controller.js'],
-        nested: true,
-      },
+        nested: true
+      }
     };
   }
 }

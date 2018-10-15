@@ -9,7 +9,7 @@ export class HomeController {
   constructor(@inject(RestBindings.Http.RESPONSE) private response: Response) {
     this.html = fs.readFileSync(
       path.join(__dirname, '../../../public/index.html'),
-      'utf-8',
+      'utf-8'
     );
   }
 
@@ -17,9 +17,9 @@ export class HomeController {
     responses: {
       '200': {
         description: 'Home Page',
-        content: { 'text/html': { schema: { type: 'string' }}},
-      },
-    },
+        content: { 'text/html': { schema: { type: 'string' } } }
+      }
+    }
   })
   homePage() {
     this.response

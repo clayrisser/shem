@@ -18,11 +18,9 @@
     "build:dist10": "lb-tsc es2018",
     "build:watch": "lb-tsc --watch",
     "clean": "lb-clean dist*",
-    "lint": "npm run prettier:check && npm run tslint",
+    "lint": "npm run format && npm run tslint",
     "lint:fix": "npm run tslint:fix && npm run prettier:fix",
-    "prettier:cli": "lb-prettier \"**/*.ts\" \"**/*.js\"",
-    "prettier:check": "npm run prettier:cli -- -l",
-    "prettier:fix": "npm run prettier:cli -- --write",
+    "format": "prettier --write ./src/*.ts ./src/*/*.ts",
     "tslint": "lb-tslint",
     "tslint:fix": "npm run tslint -- --fix",
     "pretest": "npm run clean && npm run build",
@@ -60,6 +58,7 @@
   "devDependencies": {
     "@loopback/build": "^0.7.4",
     "@loopback/testlab": "^0.14.1",
-    "@types/node": "^10.11.2"
+    "@types/node": "^10.11.2",
+    "prettier": "^1.14.3"
   }
 }
