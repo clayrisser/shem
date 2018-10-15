@@ -1,12 +1,12 @@
 import { inject } from '@loopback/core';
-import { juggler, AnyObject } from '@loopback/repository';
+import { juggler } from '@loopback/repository';
 
 const { env } = process;
 const config = {
-  name: 'memory',
   connector: 'memory',
+  file: env.MEMORY_FILE || '',
   localStorage: '',
-  file: env.DB_FILE || ''
+  name: 'memory'
 };
 
 export class MemoryDataSource extends juggler.DataSource {
@@ -14,7 +14,7 @@ export class MemoryDataSource extends juggler.DataSource {
 
   constructor(
     @inject('datasources.config.memory', { optional: true })
-    dsConfig: AnyObject = config
+    dsConfig: object = config
   ) {
     super(dsConfig);
   }

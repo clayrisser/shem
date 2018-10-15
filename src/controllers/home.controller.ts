@@ -1,8 +1,8 @@
+import { get } from '@loopback/openapi-v3';
 import * as fs from 'fs';
 import * as path from 'path';
-import { RestBindings, Response } from '@loopback/rest';
-import { get } from '@loopback/openapi-v3';
 import { inject } from '@loopback/context';
+import { RestBindings, Response } from '@loopback/rest';
 
 export class HomeController {
   private html: string;
@@ -16,7 +16,7 @@ export class HomeController {
   @get('/', {
     responses: {
       '200': {
-        description: 'Home Page',
+        description: 'Home',
         content: { 'text/html': { schema: { type: 'string' } } }
       }
     }

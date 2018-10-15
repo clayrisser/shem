@@ -1,6 +1,6 @@
 {
   "name": "shem",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "shem",
   "keywords": [
     "loopback-application",
@@ -11,23 +11,20 @@
     "node": ">=8.9"
   },
   "scripts": {
-    "build:all-dist": "npm run build:dist8 && npm run build:dist10",
+    "build": "lb-tsc es2017 --outDir dist",
     "build:apidocs": "lb-apidocs",
-    "build": "lb-tsc",
-    "build:dist8": "lb-tsc es2017",
-    "build:dist10": "lb-tsc es2018",
     "build:watch": "lb-tsc --watch",
-    "clean": "lb-clean dist*",
+    "clean": "lb-clean dist",
+    "format": "prettier --write ./src/*.ts ./src/*/*.ts",
     "lint": "npm run format && lb-tslint",
     "lint:fix": "npm run format && lb-tslint --fix",
-    "format": "prettier --write ./src/*.ts ./src/*/*.ts",
-    "pretest": "npm run clean && npm run build",
-    "test": "lb-mocha --allow-console-logs \"DIST/test\"",
     "posttest": "npm run lint",
-    "test:dev": "lb-mocha --allow-console-logs DIST/test/**/*.js && npm run posttest",
+    "prepublishOnly": "npm run test",
     "prestart": "npm run build",
-    "start": "node .",
-    "prepublishOnly": "npm run test"
+    "pretest": "npm run clean && npm run build",
+    "start": "npm run lint && node .",
+    "test": "lb-mocha --allow-console-logs \"dist/test\"",
+    "test:dev": "lb-mocha --allow-console-logs dist/test/**/*.js && npm run posttest"
   },
   "repository": {
     "type": "git"
@@ -38,24 +35,22 @@
     "README.md",
     "index.js",
     "index.d.ts",
-    "dist*/src",
-    "dist*/index*",
+    "dist/src",
+    "dist/index*",
     "src"
   ],
   "dependencies": {
-    "@loopback/boot": "^0.14.3",
-    "@loopback/context": "^0.12.13",
-    "@loopback/core": "^0.11.14",
-    "@loopback/dist-util": "^0.3.7",
-    "@loopback/openapi-v3": "^0.15.2",
-    "@loopback/repository": "^0.19.0",
-    "@loopback/rest": "^0.25.2",
-    "@loopback/service-proxy": "^0.8.8",
-    "loopback-connector-mongodb": "^3.8.0"
+    "@loopback/boot": "^1.0.0",
+    "@loopback/context": "^1.0.0",
+    "@loopback/core": "^1.0.0",
+    "@loopback/openapi-v3": "^1.0.0",
+    "@loopback/repository": "^1.0.0",
+    "@loopback/rest": "^1.0.0",
+    "@loopback/service-proxy": "^1.0.0"
   },
   "devDependencies": {
-    "@loopback/build": "^0.7.4",
-    "@loopback/testlab": "^0.14.1",
+    "@loopback/build": "^1.0.0",
+    "@loopback/testlab": "^1.0.0",
     "@types/node": "^10.11.2",
     "prettier": "^1.14.3"
   }

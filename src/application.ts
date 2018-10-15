@@ -10,10 +10,15 @@ export class ShemApplication extends BootMixin(
 ) {
   constructor(options: ApplicationConfig = {}) {
     super(options);
+
+    // Set up the custom sequence
     this.sequence(MySequence);
+
     this.projectRoot = __dirname;
+    // Customize @loopback/boot Booter Conventions here
     this.bootOptions = {
       controllers: {
+        // Customize ControllerBooter Conventions here
         dirs: ['controllers'],
         extensions: ['.controller.js'],
         nested: true
